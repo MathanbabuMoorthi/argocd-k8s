@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: battle-app
+  namespace: default
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/MathanbabuMoorthi/argocd-k8s.git
+    targetRevision: aks
+    path: .
+  destination:
+    server: https://argocd-cluster-dns-cobdpgh9.hcp.eastus.azmk8s.io:443
+    namespace: battleship
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
