@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: battleship-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/MathanbabuMoorthi/argocd.git
+    targetRevision: HEAD
+    path: .
+  destination:
+    server: https://10.0.0.5:6443
+    namespace: battleship
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
