@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: battle-app
+  name: battle-aks-app
   namespace: argocd
 spec:
   project: default
